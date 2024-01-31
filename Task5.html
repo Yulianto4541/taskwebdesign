@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox with Bootstrap</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <style>
+      /* Custom CSS for Flexbox */
+      .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* Adjust as needed */
+      }
+      .flex-item {
+        width: 50%; /* Adjust width as needed */
+        margin-bottom: 10px; /* Adjust margin as needed */
+
+        flex: 1; /* Make flex item fill available space */
+        border: 0.3px solid rgb(199, 189, 189); /* Border style */
+      }
+
+      /* Custom CSS for bordered flex container */
+      .bordered-flex-container {
+        display: flex;
+        border: 0.1px solid #000; /* Border style */
+        padding: 10px; /* Optional padding for spacing */
+      }
+      /* Custom CSS for bordered flex item */
+      .bordered-flex-item {
+        flex: 1; /* Make flex item fill available space */
+        border: 0.3px solid #000; /* Border style */
+        padding: 10px; /* Optional padding for spacing */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="flex-container mt-3">
+        <!-- Bordered flex container -->
+
+        <div class="flex-item p-3">
+          <h4 class="title">Tip from our expert</h4>
+          <p class="fw-lighter">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero hic
+            adipisci nobis quia, doloremque perferendis aperiam eaque nesciunt
+            quaerat ut explicabo placeat, eum, nemo temporibus repellat
+            quibusdam alias id minus!
+          </p>
+        </div>
+        <div class="flex-item">
+          <img src="./img/FlexImg.jpg" style="width: 100%" />
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <a href="./index.html" class="btn btn-primary">back to Home</a>
+    </div>
+  </body>
+</html>
