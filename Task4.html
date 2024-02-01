@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weather Apps</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <style>
+      .scroll {
+        flex: 1;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+      }
+
+      .card {
+        flex: auto;
+        flex-shrink: 0;
+        max-width: 150px;
+        margin-right: 20px;
+        border-radius: 15px;
+      }
+      #avatar {
+        max-width: 100px;
+      }
+      .card-title {
+        padding-top: 20px;
+      }
+    </style>
+    <script type="text/javascript" src=""></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+    ></script>
+  </head>
+
+  <body oncontextmenu="return false" class="snippet-body">
+    <section class="pt-5 pb-5">
+      <div class="container">
+        <h2>Weather Apps</h2>
+        <div id="data-container" class="scroll"></div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let headers = new Headers();
+        headers.append("Accept", "application/json");
+        // Make API call
+        fetch("https://www.holiday-weather.com/new_york_city/liveWeatherData")
+          .then((response) => response.json())
+          .then((data) => {
+            const cardContainer = document.getElementById("data-container");
+            Object.keys(data).forEach((date) => {
+              const deals = data[date];
+              // Create a card for each deal
+              deals.forEach((deal) => {
+                const card = document.createElement("div");
+                card.className = "card";
+                card.innerHTML = `
+                                <div class="card-body">
+                                    <h5 class="card-title">${deal.datetime}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">${deal.c}°C / ${deal.f}°F</h6>
+                                    <img src="${deal.icon}" id="avatar" alt="Weather Icon" />
+                                </div>
+                            `;
+                cardContainer.appendChild(card);
+              });
+            });
+          })
+          .catch((error) => console.log("Error fetching data:", error.message));
+      });
+    </script>
+  </body>
+</html>
